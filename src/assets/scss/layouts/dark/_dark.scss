@@ -1,0 +1,156 @@
+// --------------------------------------------------
+// Css Variables with class
+// --------------------------------------------------
+
+.card {
+    --bs-card-title-color: rgba(255, 255, 255, 0.85);
+    --bs-card-subtitle-color: rgba(255, 255, 255, 0.6);
+    --bs-card-bg: #1a2537;
+    --bs-card-box-shadow: none;
+}
+
+a,
+a.link,
+.nav-link:hover,
+.nav-link:focus,
+.sidebar-nav ul .sidebar-item .sidebar-link,
+.sidebar-nav ul .sidebar-item .first-level .sidebar-item .sidebar-link,
+.sidebar-nav ul .sidebar-item .sidebar-link i {
+    color: rgba(var(--bs-link-color-rgb), 0.85);
+}
+
+.link-dark,
+.blockquote-footer {
+    color: rgba(var(--bs-link-color-rgb), 0.85) !important;
+}
+
+.dropdown-menu {
+    --bs-dropdown-bg: #1a2537;
+    --bs-dropdown-link-color: rgba(var(--bs-link-color-rgb), 0.85);
+    --bs-dropdown-box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+.accordion-item,
+.accordion-item:focus {
+    --bs-accordion-btn-color: #eaeff4;
+    --bs-accordion-border-color: #333f55;
+}
+
+// --------------------------------------------------
+// Font Colors
+// --------------------------------------------------
+
+h6,
+.h6,
+h5,
+.h5,
+h4,
+.h4,
+h3,
+.h3,
+h2,
+.h2,
+h1,
+.h1,
+.accordion-button:not(.collapsed) {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.tooltip-inner,
+.text-dark,
+.form-label,
+.col-form-label,
+.table> :not(caption)>*>* {
+    color: $body-color-dark !important;
+}
+
+.nav-tabs .nav-link,
+.nav-pills .nav-link,
+.breadcrumb-item+.breadcrumb-item::before {
+    color: $link-color-dark;
+}
+
+.text-bg-light,
+.bg-light,
+.striped-rows .row:nth-child(odd),
+.bg-hover-light-black:hover,
+.list-group-item-action:hover,
+.list-group-item-action:focus {
+    color: var(--bs-card-title-color) !important;
+}
+
+// --------------------------------------------------
+// Background Colors
+// --------------------------------------------------
+
+.body-wrapper,
+.page-wrapper,
+#main-wrapper {
+    background: $dark-bg-variant !important;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus,
+.form-control:disabled,
+.bg-white {
+    background-color: $dark-bg-variant !important;
+}
+
+.text-bg-light,
+.bg-light,
+.striped-rows .row:nth-child(odd),
+.bg-hover-light-black:hover,
+.list-group-item-action:hover,
+.list-group-item-action:focus {
+    background-color: $dark-bg-variant !important;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: $dark-bg-subtle-dark;
+}
+
+// --------------------------------------------------
+// Border Colors
+// --------------------------------------------------
+.border-white {
+    border-color: $border-color-dark !important;
+}
+
+.form-check-input {
+    border: 1px solid #57647a;
+}
+
+// ----------------------------------
+// form components
+// ----------------------------------
+
+.form-select,
+.form-select:focus,
+.form-control,
+.form-control:focus {
+    border-color: $border-color-dark;
+    color: $body-color-dark;
+    background-color: $body-bg-dark;
+}
+
+textarea::placeholder,
+input::placeholder,
+.nav-small-cap {
+    color: $body-color-dark;
+}
+
+.form-control:focus {
+    border-color: var(--bs-primary) !important;
+}
+
+input::file-selector-button {
+    background-color: $body-bg-dark;
+    color: $body-color-dark;
+}
+
+.input-group-text {
+    background-color: $light-bg-subtle-dark;
+    border: var(--bs-table-border-color);
+    color: $body-color-dark;
+}

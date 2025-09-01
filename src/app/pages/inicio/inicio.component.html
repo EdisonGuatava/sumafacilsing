@@ -1,0 +1,192 @@
+<div class="card w-100">
+    <div class="p-3">
+     <!--  <h4 class="card-title mb-0">Alertas</h4>
+    </div>
+    <div class="card-body border-top"> -->
+      
+      @if (!emailVerified) {    
+      <ngb-alert type="light-danger" [dismissible]="false" 
+        class="customize-alert bg-danger-subtle text-danger d-flex align-items-center fs-4">
+        <span class="side-line bg-danger"></span>
+        <div class="font-medium" (click)="reload()">1. Valida Su Correo</div>
+        <div class="ms-auto">
+          <a href="javascript:void(0)" class="text-danger"><i-feather class="feather-sm"
+              name="info" placement="top"
+              ngbPopover="Ve a Tu Correo en la Bandeja de entrada Te enviamos un Correo con un enlace el cual debes Validar" popoverTitle="Verificar Correo"></i-feather></a>
+       
+        </div>
+      </ngb-alert>
+    
+    }
+    @if (perfil) {
+      <ngb-alert type="light-info" [dismissible]="false" (click)="perfilli()"
+        class="customize-alert bg-info-subtle text-info d-flex align-items-center fs-4">
+        <span class="side-line bg-info"></span>
+        <div class="font-medium">2. Click Para Completar Tu Perfil</div>
+      </ngb-alert>
+    }
+    @if (solicitudesv) {
+      <ngb-alert type="success" [dismissible]="false" 
+        class="customize-alert bg-success-subtle text-success d-flex align-items-center fs-4">
+        <span class="side-line bg-success"></span>
+        <div class="font-medium">¡Felicidades por enviar la solicitud! 🎉 Estamos en la recta final, y tu solicitud ya está en proceso de validación. ¡Pronto tendremos grandes noticias! 🚀</div>
+      </ngb-alert>
+    }
+    </div>
+  </div>
+
+
+  @if (!solicitudesv) {
+<div class="card poll-widget">
+    <div class="card-body">
+      <h4 class="card-title">Tabla de Simulación</h4>
+      <h5 class="card-subtitle">Cuanto Dinero Solicita</h5>
+      <div class="col-md-11">
+      <mat-slider class="width-100pc" min="50000" max="300000" (change)="onChange()" step="50000"  showTickMarks discrete [displayWith]="formatLabel">
+        <input matSliderThumb [(ngModel)]="monto" #slider>
+      </mat-slider>
+    </div>
+        <!-- <mat-slider  class="col-12" min=50000 max="300000" step="50000" value="50000" autoTicks="true" showTicks="true" thumbLabel="true" [(ngModel)]="monto" (change)="onChange()"></mat-slider> -->
+        <div class="d-flex align-items-center">
+          <div>
+            <h6 class="mb-0 fw-bold">
+              Dinero
+              <span class="fw-light">50</span>
+            </h6>
+          </div>
+          <div class="ms-auto">
+            <h6 class="mb-0 fw-bold">300</h6>
+          </div>
+        </div>
+        <br>
+        <h4 class="card-title">TIEMPO DE SOLICITUD</h4>
+        <h5 class="card-subtitle">Diás</h5>
+          <!-- <mat-slider  class="col-12"min="0" max="30" step="15" value="15" autoTicks="true" showTicks="true" thumbLabel="true"   [(ngModel)]="plazo" (change)="onChange1()"></mat-slider> -->
+          <mat-slider class="width-100pc"  min="1" max="15" step="1" value="15" (change)="onChange1()" showTickMarks discrete [displayWith]="formatLabel">
+            <input matSliderThumb [(ngModel)]="plazo" #slider>
+          </mat-slider>
+          <div class="d-flex align-items-center">
+            <div>
+              <h6 class="mb-0 fw-bold">
+                Tiempo
+                <span class="fw-light">1</span>
+              </h6>
+            </div>
+            <div class="ms-auto">
+              <h6 class="mb-0 fw-bold">15</h6>
+            </div>
+          </div>
+
+      <ul class="list-style-none mt-3 mb-2">
+
+        <li>
+          <div class="d-flex align-items-center">
+            <div>
+              <h6 class="mb-0 fw-bold">
+                A
+                <span class="fw-light">Monto Solicitado</span>
+              </h6>
+            </div>
+            <div class="ms-auto">
+              <h6 class="mb-0 fw-bold">{{monto | currency:'':'symbol':'1.0-0'}}</h6>
+            </div>
+          </div>
+        </li>
+        <li class="mt-4">
+          <div class="d-flex align-items-center">
+            <div>
+              <h6 class="mb-0 fw-bold">
+                B
+                <span class="fw-light">INTERES</span>
+              </h6>
+            </div>
+            <div class="ms-auto">
+              <h6 class="mb-0 fw-bold">{{interes | currency:'':'symbol':'1.0-0'}}</h6>
+            </div>
+          </div>
+        
+        </li>
+        <li class="mt-4">
+          <div class="d-flex align-items-center">
+            <div>
+              <h6 class="mb-0 fw-bold">
+                C
+                <span class="fw-light">AVAL (opcional) 
+                  
+                   </span>
+              </h6>
+            </div>
+            <div class="ms-auto">
+              <h6 class="mb-0 fw-bold">{{aval | currency:'':'symbol':'1.0-0'}}</h6>
+            </div>
+            <a href="javascript:void(0)" class="text-info"><i-feather class="feather-sm"
+              name="info" placement="top"
+              ngbPopover="Para el otorgar el credito, debes cumplir con el requisito de aval que garantice el cumplimineto del pago total o parcial del credito si lo desea puede contratarlo con nosotros al momento de solicitar su credito con nuestros asesores" popoverTitle="Aval"></i-feather></a>
+          </div>
+        
+        </li>
+        <li class="mt-4">
+          <div class="d-flex align-items-center">
+            <div>
+              <h6 class="mb-0 fw-bold">
+                D
+                <span class="fw-light">Plataforma Tecnologica</span>
+              </h6>
+            </div>
+            <div class="ms-auto">
+              <h6 class="mb-0 fw-bold"> $10.000</h6>
+            </div>
+          </div>
+         
+        </li>
+        <li class="mt-4">
+          <div class="d-flex align-items-center">
+            <div>
+              <h6 class="mb-0 fw-bold">
+                E
+                <span class="fw-light">Descuento Tecnologico</span>
+              </h6>
+            </div>
+            <div class="ms-auto">
+              <h6 class="mb-0 fw-bold">- $10.000</h6>
+            </div>
+          </div>
+          
+        </li>
+        <li class="mt-4">
+          <div class="d-flex align-items-center">
+            <div>
+              <h6 class="mb-0 fw-bold">
+                F
+                <span class="fw-light">Total Cargos</span>
+              </h6>
+            </div>
+            <div class="ms-auto">
+              <h6 class="mb-0 fw-bold">{{totalcargos | currency:'':'symbol':'1.0-0'}}</h6>
+            </div>
+          </div>
+          
+        </li>
+        <li class="mt-4">
+          <div class="d-flex align-items-center">
+            <div>
+              <h6 class="mb-0 fw-bold">
+                Total a Pagar
+                <!-- <span class="fw-light">Total Cargos</span> -->
+              </h6>
+            </div>
+            <div class="ms-auto">
+              <h6 class="mb-0 fw-bold">{{totalapagar | currency:'':'symbol':'1.0-0'}}</h6>
+            </div>
+          </div>
+          
+        </li>
+      </ul>
+    </div> 
+    <button (click)="soli()"
+            type="button"
+          class="btn btn-primary">
+            3. Realiza la Solicitud
+          </button>
+  </div>
+  }

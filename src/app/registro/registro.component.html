@@ -1,0 +1,117 @@
+<div
+  class="auth-wrapper d-flex no-block justify-content-center align-items-center"
+  style="background: url(assets/images/big/auth-bg.jpg) no-repeat center center"
+>
+  <div class="auth-box m-3 m-md-0">
+    <div>
+      <div class="text-center">
+        <span class="db"
+          ><img src="assets/images/logo-icon.png" alt="logo"
+        /></span>
+        <h5 class="font-medium mb-4">Bienvenido a TuAdelanto</h5>
+      </div>
+      <!-- Form -->
+      @if (validar) {
+
+      <div class="row">
+        <div class="text-center">
+          <h5 class="font-medium mb-4">
+            Unete a Nosotros Con tu Numero Telefonico Para Continuar Digita tu numero de Telefonico
+          </h5>
+        </div>
+        <div class="col-12">
+          <form class="form-horizontal mt-12" action="index.html">
+            <!-- <form class="inputotp"> -->
+            <div class="mb-3 row">
+              <!-- <div class="col-12"> -->
+                <form [formGroup]="phoneForm" #f="ngForm">
+                  <ngx-intl-tel-input
+                    [cssClass]="'custom'"
+                    [preferredCountries]="[
+                      CountryISO.UnitedStates,
+                      CountryISO.UnitedKingdom
+                    ]"
+                    [enableAutoCountrySelect]="false"
+                    [enablePlaceholder]="true"
+                    [searchCountryFlag]="true"
+                    [searchCountryField]="[
+                      SearchCountryField.Iso2,
+                      SearchCountryField.Name
+                    ]"
+                    [selectFirstCountry]="false"
+                    [selectedCountryISO]="CountryISO.Colombia"
+                    [maxLength]="10"
+                    [phoneValidation]="true"
+                    name="phone"
+                    formControlName="phone"
+                  ></ngx-intl-tel-input>
+                </form>
+              <!-- </div> -->
+            </div>
+            <div class="mb-3 text-center">
+              <div class="col-xs-12 mb-4">
+                <a
+                  class="btn d-block w-100 btn-lg btn-info"
+                  (click)="validarphone()"
+                  >Validar</a
+                >
+              </div>
+              <div class="col-xs-12 mb-4">
+              <button type="button" class="btn btn-success"  (click)="ayuda()">
+                <i class="fab fa-whatsapp me-2"></i> Ayuda
+              </button>
+            </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      } @else {
+      <div class="row">
+        <div class="col-12">
+          <div class="text-center">
+            <!-- s<h5 class="font-medium mb-4">Bienvenido a Zantoen</h5> -->
+            <h5 class="font-medium mb-4">
+              ingresa el Cod enviado <b>{{ numero1 }}*****{{ numero2 }}</b>
+            </h5>
+            <!-- <h5 class="font-medium mb-4">{{segundos}} Seg</h5>
+                        <h5 class="font-medium mb-4">¿No recibes el código? <b>re-enviar</b></h5> -->
+          </div>
+          <form class="form-horizontal mt-3" action="index.html">
+            <div class="inputotp">
+              <ngx-otp-input
+                [options]="otpInputConfig"
+                (otpChange)="handeOtpChange($event)"
+                (otpComplete)="handleFillEvent($event)"
+              >
+              </ngx-otp-input>
+            </div>
+
+            <!-- <form class="inputotp"> -->
+            <div class="text-center">
+              <!-- s<h5 class="font-medium mb-4">Bienvenido a Zantoen</h5> -->
+              <!-- <h5 class="font-medium mb-4">ingresa el Cod enviado <b>{{numero1}}*****{{numero2}}</b></h5> -->
+              <h5 class="font-medium mb-4">{{ segundos }} Seg</h5>
+              <h5 class="font-medium mb-4">
+                ¿No recibes el código? <b>re-enviar</b>
+              </h5>
+            </div>
+            @if (itemayuda) {
+            <div class="col-xs-12 mb-4" >
+            <button type="button" class="btn btn-success"  (click)="ayuda()">
+              <i class="fab fa-whatsapp me-2"></i> Ayuda
+            </button>
+          </div>
+          }
+            <!-- <div class="mb-3 text-center ">
+                            <div class="col-xs-12 mb-4">
+                                <a class="btn d-block w-100 btn-lg btn-info" >Validar</a>
+                            </div>
+                        </div> -->
+          </form>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>
+<div id="recaptcha-container"></div>

@@ -1,0 +1,262 @@
+<div class="card" *ngIf="perfil">
+    <div class="card-body text-center">
+      <div class="profile-pic mb-4 mt-3" >
+        <img (click)="modalOpen(modalBasic)" onclick="document.getElementById('myFile').click();" onerror="this.src='assets/images/users/avatar.jpeg';"
+          [src]="imagen"
+          width="150"
+          class="rounded-circle"
+          alt="user"
+        />
+        <!-- <img src="imagenotfound.gif" alt="Image not found" onerror="this.src='imagefound.gif';" /> -->
+        <!-- <div class="inputWrapper">
+          <input class="fileInput" type="file" name="file1"/>
+      </div> -->
+      <input type="file" id="myFile" style="display:none;" accept="image/*" capture="camera" (change)="fileChangeEvent($event)" />
+        <h4 class="mt-3 mb-0">{{user.displayName}}</h4>
+        <a href="mailto:{{user.email}}">{{ user.email}}</a>
+        <h4 class="mt-3 mb-0">{{user.phoneNumber}}</h4>
+      </div>
+      <!-- <div
+        class="badge rounded-pill bg-light text-dark font-medium fs-4 me-1"
+      >
+        Dashboard
+      </div>
+      <div
+        class="badge rounded-pill bg-light text-dark font-medium fs-4 me-1"
+      >
+        UI
+      </div>
+      <div
+        class="badge rounded-pill bg-light text-dark font-medium fs-4 me-1"
+      >
+        UX
+      </div> -->
+      <!-- <div (click)="modalOpen(modalBasic)"
+        class="badge rounded-pill bg-info fs-4"
+        data-toggle="tooltip"
+        data-placement="top"
+        title="3 more"
+      >
+        +3
+      </div> -->
+    </div>
+    
+
+    <div class="row">
+      <div class="col-sm-12">
+          <div class="card">
+              
+              <div class="card-body">
+                  <div class="card-block">
+                      <form  [formGroup]="regularForm" #f="ngForm"  novalidate>
+                          <div class="form-group">                            
+                            <label for="inputnombre">Nombre y Apellido como Aparece en el Documento</label>
+                              <input type="text" 
+                              class="form-control" 
+                              [ngClass]="{'is-valid': regularForm.get('inputnombre').valid, 'is-invalid': regularForm.get('inputnombre').invalid}" 
+                               id="inputnombre" formControlName="inputnombre" required   [(ngModel)]="usuario.name" >
+                              <small class="form-text text-danger"
+                                  *ngIf="!regularForm.get('inputnombre').valid && (regularForm.get('inputnombre').dirty || regularForm.get('inputnombre').touched)">Ingresar Nombre!</small>
+                          </div>
+                          <div class="form-group">
+                              <label for="identidad">Documento de Identidad</label>
+                              <input type="number" 
+                               class="form-control" 
+                              [ngClass]="{'is-valid': regularForm.get('identidad').valid, 'is-invalid': regularForm.get('identidad').invalid}"  id="identidad" formControlName="identidad" 
+                                  required [(ngModel)]="usuario.ident" >
+                              <small class="form-text text-danger"
+                                  *ngIf="!regularForm.get('identidad').valid && (regularForm.get('identidad').dirty || regularForm.get('identidad').touched)">identidad
+                                  no valida</small>
+                          </div>
+                          <div class="form-group">
+                            <label for="expe">Fecha de Nacimiento</label>
+
+                            <input type="date"  class="form-control" 
+                            [ngClass]="{'is-valid': regularForm.get('expe').valid, 'is-invalid': regularForm.get('expe').invalid}" id="expe" formControlName="expe"
+                                required [(ngModel)]="usuario.datenaci">
+                            <small class="form-text text-danger"
+                                *ngIf="!regularForm.get('expe').valid && (regularForm.get('expe').dirty || regularForm.get('expe').touched)">expedicion
+                                no valida</small>
+                        </div>
+                        <div class="form-group">
+                          <label for="direccion">Whatapp</label>
+
+                          <input type="number" class="form-control" 
+                          [ngClass]="{'is-valid': regularForm.get('whatapps').valid, 'is-invalid': regularForm.get('whatapps').invalid}"
+                           id="whatapps" formControlName="whatapps"
+                              required placeholder="Whatapps" [(ngModel)]="usuario.whatapps">
+                          <small class="form-text text-danger"
+                              *ngIf="!regularForm.get('whatapps').valid && (regularForm.get('whatapps').dirty || regularForm.get('whatapps').touched)">whatapps
+                              no valido</small>
+                        </div>
+
+                        <div class="row"> 
+                        <div class="form-group col-lg-6">
+                          <label for="direccion">Direccion</label>
+
+                          <input type="text" class="form-control" 
+                          [ngClass]="{'is-valid': regularForm.get('direccion').valid, 'is-invalid': regularForm.get('direccion').invalid}"
+                           id="direccion" formControlName="direccion"
+                              required placeholder="Ejemplo Calle carrera  numero" [(ngModel)]="usuario.adress">
+                          <small class="form-text text-danger"
+                              *ngIf="!regularForm.get('direccion').valid && (regularForm.get('direccion').dirty || regularForm.get('direccion').touched)">direccion
+                              no valida</small>
+                        </div>
+                        <div class="col-lg-6">
+                          <label for="direccion">Ciudad</label>
+                          <div class="input-group mb-3">
+                            <input type="text" class="form-control" 
+                            [ngClass]="{'is-valid': regularForm.get('ciudad').valid, 'is-invalid': regularForm.get('ciudad').invalid}"
+                             id="ciudad" formControlName="ciudad"
+                                required placeholder="Ciudad" [(ngModel)]="usuario.ciudad">
+                            <button class="btn btn-info" type="button" (click)="validarpermiso(usuario.adress, usuario.ciudad)" > 
+                              <i class="ti-world"></i>
+                            Ubicar en Mapa</button>
+                          </div>
+                        </div>
+                        </div> 
+                       
+                       
+
+
+                      <!-- <div class="form-group">                        
+                        <button type="button" (click)="validarpermiso(usuario.adress, usuario.ciudad)" class="btn btn-dark btn-raised">Ubicar</button>
+                    </div> -->
+                    <div *ngIf="usuario.busdir">
+                    <google-map  height="100%"
+                    width="100%"
+                    [center]="location"
+                    [zoom]="zoom">
+                    <map-marker [position]="location" [options]="markerOptions" (mapDragend)="direccion($event)"/>
+                    </google-map> 
+                  </div>
+
+                          <!-- <div class="form-group">
+                              <label for="textArea">Textarea</label>
+                              <textarea class="form-control" rows="3" id="textArea" formControlName="textArea"
+                                  required></textarea>
+                              <small class="form-text text-danger"
+                                  *ngIf="!regularForm.get('textArea').valid && (regularForm.get('textArea').dirty || regularForm.get('textArea').touched)">This
+                                  field is required!</small>
+                          </div> -->
+                          <!-- <div class="form-group">
+                              <label class>Radios</label>
+  
+                              <div class="" *ngFor="let radioOption of radioOptions">
+                                  <div class="form-check">
+                                      <input type="radio" id="customRadio2" class="form-check-input"
+                                          [value]="radioOption" formControlName="radioOption">
+                                      <label class="form-check-label" for="customRadio2">{{ radioOption }}</label>
+                                  </div>
+  
+                              </div>
+                          </div> -->
+                          <ngb-alert type="light-danger" [dismissible]="false" *ngIf="usuario.img == ''"
+                          class="customize-alert bg-danger-subtle text-danger d-flex align-items-center fs-4">
+                          <span class="side-line bg-danger"></span>
+                          <div class="font-medium">Debes Cambiar la Foto de Perfil</div>
+                         
+                        </ngb-alert  >
+                        <ngb-alert type="light-danger" [dismissible]="false" *ngIf="!usuario.busdir"
+                          class="customize-alert bg-danger-subtle text-danger d-flex align-items-center fs-4">
+                          <span class="side-line bg-danger"></span>
+                          <div class="font-medium">Debes Ubicar En Mapa</div>
+                          
+                        </ngb-alert>
+                       
+
+                          <div class="form-group">
+                              <button type="submit" class="btn btn-success btn-raised me-1"
+                                  [disabled]="!regularForm.valid" (click)="validarinfo()" >Guardar</button>
+                              <button type="button" (click)="regresar()" class="btn btn-dark btn-raised">Cancel</button>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+<!-- <div class="p-4 border-top mt-3">
+    <div class="row text-center">
+      <div class="col-6 border-end">
+        <a
+          href="#"
+          class="
+            link
+            d-flex
+            align-items-center
+            justify-content-center
+            font-medium
+          "
+        >
+          <i class="mdi mdi-message fs-6 me-2"></i>Message</a
+        >
+      </div>
+      <div class="col-6">
+        <a
+          href="#"
+          class="
+            link
+            d-flex
+            align-items-center
+            justify-content-center
+            font-medium
+          "
+        >
+          <i class="mdi mdi-developer-board fs-6 me-2"></i>Portfolio</a
+        >
+      </div>
+    </div>
+  </div> -->
+</div>
+
+<ng-template #modalBasic let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Editar Imagen</h4>
+    <button
+      type="button"
+      class="btn text-danger close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <i-feather name="x"></i-feather>
+    </button>
+  </div>
+  <div class="modal-body">   
+    <div class="imagenc">
+      <image-cropper
+      [imageChangedEvent]="imageChangedEvent"
+      [maintainAspectRatio]="true"
+      [aspectRatio]="4 / 4"
+      format="jpeg"
+      [imageQuality]=50
+      (imageCropped)="imageCropped($event)"
+      (imageLoaded)="imageLoaded()"
+      (cropperReady)="cropperReady()"
+      (loadImageFailed)="loadImageFailed()"
+  ></image-cropper>
+</div>
+  <div class="card-body text-center">
+
+    <div class="profile-pic mb-4 mt-3" >
+    
+        <img [src]="croppedImage" 
+        width="150"
+        class="rounded-circle"
+        alt="user" />
+        
+      </div>
+    </div>
+
+ 
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="modal.close('Save click')"
+    >
+      Accept
+    </button>
+  </div>
+</ng-template>

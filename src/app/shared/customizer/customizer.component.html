@@ -1,0 +1,26 @@
+<ng-scrollbar class="customizer-body custom-pills">
+  <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills nav-justified custom-tab border-bottom">
+    <li [ngbNavItem]="1">
+      <a ngbNavLink class="d-flex flex-column gap-2 justify-content-center text-center">
+        <i-feather class="feather-sm m-auto" name="airplay"></i-feather>
+        <span class="fs-3">Settings</span>
+      </a>
+      <ng-template ngbNavContent>
+        <button type="button" class="btn btn-lg btn-success" (click)="openasesor()">
+          <i class="fab fa-whatsapp me-1"></i> Contacta un Asesor
+        </button>
+      </ng-template>
+    </li>
+
+    <li [ngbNavItem]="2">
+      <a ngbNavLink class="d-flex flex-column gap-2 justify-content-center text-center"><i-feather
+          class="feather-sm m-auto" name="message-square"></i-feather>
+        <span class="fs-3">Messages</span></a>
+      <ng-template ngbNavContent>
+       
+      </ng-template>
+    </li>
+  </ul>
+
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
+</ng-scrollbar>

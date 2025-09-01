@@ -1,0 +1,276 @@
+<div class="d-flex align-items-center">
+  <!-- ============================================================== -->
+  <!-- toggle and nav items -->
+  <!-- ============================================================== -->
+  <ul class="navbar-nav me-auto">
+    <li class="nav-item nav-icon-hover-bg dark rounded-circle d-none d-lg-flex">
+      <a (click)="toggleSidebar.emit()" class="nav-link sidebartoggler position-relative" href="javascript:void(0)">
+        <i-feather class="feather-sm" name="menu"></i-feather>
+      </a>
+    </li>
+    <!-- ============================================================== -->
+    <!-- Comment -->
+    <!-- ============================================================== -->
+    <li class="nav-item nav-icon-hover-bg dark rounded-circle d-flex dropdown" ngbDropdown>
+      <a class="nav-link dropdown-toggle position-relative" href="javascript:void(0)" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        <i-feather class="feather-sm" name="bell"></i-feather>
+        <div class="notify">
+          <span class="heartbit"></span>
+          <span class="point"></span>
+        </div>
+      </a>
+      <div class="dropdown-menu mailbox dropdown-menu-animate-up" ngbDropdownMenu>
+        <ul class="list-style-none">
+          <li class="py-3 px-4 border-bottom">
+            <h5 class="mb-0 fs-4 fw-normal">Notification</h5>
+          </li>
+          <li>
+            <ng-scrollbar class="message-center notifications">
+              <!-- Message -->
+              <!-- @for(notification of notifications; track notification) {
+
+              <a href="javascript:void(0)" class="p-3 pe-0 border-bottom d-flex align-items-center dropdown-item gap-3">
+                <span class="flex-shrink-0 bg-{{
+                    notification.btn
+                  }}-subtle rounded-circle round-45 d-flex align-items-center justify-content-center fs-6 text-{{
+                    notification.btn
+                  }}">
+                  <i-feather name="{{ notification.icon }}" class="feather-sm d-flex"></i-feather>
+                </span>
+                <div class="w-75 d-inline-block">
+                  <div class="d-flex align-items-center justify-content-between">
+                    <h6 class="mb-1 fw-semibold">{{ notification.title }}</h6>
+                    <span class="d-block fs-2 text-body-color">{{
+                      notification.time
+                      }}</span>
+                  </div>
+                  <span class="d-block text-truncate text-truncate fs-11 text-body-color">{{ notification.subject
+                    }}</span>
+                </div>
+              </a>
+              } -->
+            </ng-scrollbar>
+          </li>
+          <li class="d-flex align-items-center pt-2 justify-content-center">
+            <a href="#" class="text-dark link-primary fw-semibold">Check all notifications
+              <i-feather name="chevron-right" class="feather-sm ml-1"></i-feather></a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <!-- ============================================================== -->
+    <!-- End Comment -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Messages -->
+    <!-- ============================================================== -->
+    <li class="nav-item nav-icon-hover-bg dark rounded-circle d-flex dropdown" ngbDropdown>
+      <a class="nav-link dropdown-toggle position-relative" href="javascript:void(0)" id="2" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        <i-feather class="feather-sm" name="inbox"></i-feather>
+        <div class="notify">
+          <span class="heartbit"></span>
+          <span class="point"></span>
+        </div>
+      </a>
+      <div class="dropdown-menu mailbox dropdown-menu-animate-up" aria-labelledby="2" ngbDropdownMenu>
+        <ul class="list-style-none">
+          <li class="py-3 px-4 border-bottom">
+            <h5 class="mb-0 fs-4 fw-normal">You have 4 new messages</h5>
+          </li>
+          <li>
+            <ng-scrollbar class="message-center message-body">
+              <!-- Message -->
+              <!-- @for(mymessage of mymessages; track mymessage) {
+              <a href="javascript:void(0)"
+                class="p-3 pe-0 border-bottom message-item d-flex align-items-center dropdown-item gap-3">
+                <span class="user-img position-relative d-inline-block round-45 flex-shrink-0">
+                  <img src="{{ mymessage.useravatar }}" alt="user" class="rounded-circle" />
+                  <span class="profile-status rounded-circle d-inline-block {{
+                      mymessage.status
+                    }} float-end"></span>
+                </span>
+                <div class="w-75 d-inline-block">
+                  <div class="d-flex align-items-center justify-content-between">
+                    <h6 class="mb-1 fw-semibold">{{ mymessage.from }}</h6>
+                    <span class="d-block fs-2 text-body-color">{{
+                      mymessage.time
+                      }}</span>
+                  </div>
+                  <span class="d-block text-truncate text-truncate fs-11 text-body-color">{{ mymessage.subject }}</span>
+                </div>
+              </a>
+              } -->
+            </ng-scrollbar>
+          </li>
+          <li class="d-flex align-items-center pt-2 justify-content-center">
+            <a href="#" class="text-dark link-primary fw-semibold">See all e-Mails
+              <i-feather name="chevron-right" class="feather-sm ml-1"></i-feather></a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <!-- ============================================================== -->
+    <!-- End Messages -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- mega menu -->
+    <!-- ============================================================== -->
+    <!-- <li class="nav-item nav-icon-hover-bg dark rounded-circle d-flex d-lg-none">
+      <a class="nav-link position-relative" (click)="openEnd(content)" href="javascript:void(0)">
+        <i-feather class="feather-sm" name="grid"></i-feather>
+      </a>
+    </li>
+    <ng-template #content let-offcanvas>
+      <div class="offcanvas-header">
+        <a class="navbar-brand" href="/">
+      
+          @if(themeOptions.theme === 'dark') {
+    
+          <img src="assets/images/logo-icon.png" alt="homepage" />
+          } @else {
+       
+          <img src="assets/images/logo-icon.png" alt="homepage" />
+          }
+        </a>
+        <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div ngbAccordion [closeOthers]="true">
+          @for (item of items; track item) {
+          <div class="border-0" ngbAccordionItem [collapsed]="item !== 'First'">
+            <h2 ngbAccordionHeader>
+              <button class="shadow-none" ngbAccordionButton>{{ item }}</button>
+            </h2>
+            <div ngbAccordionCollapse>
+              <div ngbAccordionBody>
+                <ng-template>
+                  @for(applink of appLinks; track applink) {
+
+                  <a href="#" class="d-flex align-items-center pb-9 position-relative">
+                    <div class="bg-{{
+                            applink.color
+                          }}-subtle rounded-circle round-45 me-3 d-flex align-items-center justify-content-center text-{{
+                            applink.color
+                          }}">
+                      <i-feather name="{{ applink.icon }}" class="feather-sm d-flex"></i-feather>
+                    </div>
+                    <div class="d-inline-block">
+                      <h6 class="mb-0">{{ applink.title }}</h6>
+                      <span class="fs-11 d-block text-muted">{{
+                        applink.subtext
+                        }}</span>
+                    </div>
+                  </a>
+
+                  }
+                </ng-template>
+              </div>
+            </div>
+          </div>
+          }
+        </div>
+
+      </div>
+    </ng-template> -->
+
+   
+    <!-- ============================================================== -->
+    <!-- End mega menu -->
+    <!-- ============================================================== -->
+  </ul>
+  <!-- ============================================================== -->
+  <!-- Right side toggle and nav items -->
+  <!-- ============================================================== -->
+  <ul class="navbar-nav align-items-center gap-10">
+    <!-- <li class="nav-item d-md-flex d-none">
+      <form class="app-search rounded-pill overflow-hidden">
+        <input type="text" class="form-control border-0" placeholder="Search for..." />
+        <a class="srh-btn text-body-color">
+          <i-feather class="feather-sm" name="search"></i-feather>
+        </a>
+      </form>
+    </li> -->
+    
+    <li class="nav-item dropdown" ngbDropdown placement="bottom-end">
+      <!-- <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="flag-icon flag-icon-{{ selectedLanguage.icon }}"></i>
+      </a> -->
+      <!-- <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="navbarDropdown"
+        ngbDropdownMenu>
+        @for(lang of languages; track lang) {
+        <span class="dropdown-item" href="#" (click)="changeLanguage(lang)">
+          <i class="flag-icon flag-icon-{{ lang.icon }} me-2"></i>
+          <span>{{ lang.language }}
+            @if(lang.type) {
+            <span>({{ lang.type }})</span>
+            }
+          </span>
+        </span>
+        }
+      </div> -->
+    </li>
+    <!-- ============================================================== -->
+    <!-- User profile and search -->
+    <!-- ============================================================== -->
+    <li class="nav-item nav-icon-hover-bg dark rounded-circle d-flex" ngbDropdown placement="bottom-end">
+      <a class="nav-link" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <img [src]="imagen"alt="user" onerror="this.src='assets/images/users/user5.jpg';" class="rounded-circle" width="31" />
+      </a>
+      <div class="dropdown-menu-end user-dd dropdown-menu-animate-up" ngbDropdownMenu>
+        <div class="profile-dropdown position-relative">
+          <div class="py-3 px-7 pb-0">
+            <h5 class="mb-0 fs-5">Perfil Usuario</h5>
+          </div>
+          <div class="d-flex align-items-center py-9 mx-7 border-bottom">
+            <img [src]="imagen" onerror="this.src='assets/images/users/user5.jpg';" class="rounded-circle" width="80" height="80" alt="" />
+            <div class="ms-3">
+              <h5 class="mb-1 fs-4">{{usuario.name}}</h5>
+              <span class="mb-1 d-block">{{usuario.email}}</span>
+              <!-- <p class="mb-0 d-flex align-items-center gap-2">
+                <i-feather name="mail" class="feather-xs d-flex"></i-feather> info&#64;monster.com
+              </p> -->
+            </div>
+          </div>
+          <div class="message-body">
+            <a href="/perfil" class="py-8 px-7 mt-8 d-flex align-items-center">
+              <span class="d-flex align-items-center justify-content-center bg-info-subtle rounded p-6 fs-7 text-info">
+                <i-feather name="user" class="feather-sm d-flex"></i-feather>
+              </span>
+              <div class="w-75 d-inline-block v-middle ps-3">
+                <h6 class="mb-1 fs-3 lh-base">Perfil</h6>
+                <span class="fs-2 d-block text-body-secondary">Perfil</span>
+              </div>
+            </a>
+            <!-- <a href="#" class="py-8 px-7 d-flex align-items-center">
+              <span class="d-flex align-items-center justify-content-center bg-info-subtle rounded p-6 fs-7 text-info">
+                <i-feather name="inbox" class="feather-sm d-flex"></i-feather>
+              </span>
+              <div class="w-75 d-inline-block v-middle ps-3">
+                <h6 class="mb-1 fs-3 lh-base">My Inbox</h6>
+                <span class="fs-2 d-block text-body-secondary">Messages & Emails</span>
+              </div>
+            </a>
+            <a href="#" class="py-8 px-7 d-flex align-items-center">
+              <span class="d-flex align-items-center justify-content-center bg-info-subtle rounded p-6 fs-7 text-info">
+                <i-feather name="edit" class="feather-sm d-flex"></i-feather>
+              </span>
+              <div class="w-75 d-inline-block v-middle ps-3">
+                <h6 class="mb-1 fs-3 lh-base">My Task</h6>
+                <span class="fs-2 d-block text-body-secondary">To-do and Daily Tasks</span>
+              </div>
+            </a> -->
+          </div>
+          <div class="d-grid py-4 px-7 pt-8">
+            <a (click)="logaut()" class="btn btn-info">Salir</a>
+          </div>
+        </div>
+      </div>
+    </li>
+    <!-- ============================================================== -->
+    <!-- User profile and search -->
+    <!-- ============================================================== -->
+  </ul>
+</div>

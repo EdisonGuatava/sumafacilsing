@@ -1,0 +1,61 @@
+.title {
+    margin: 20px;
+    text-align: center;
+    justify-content: center;
+}
+
+.text {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.text1 {
+    padding: 10px;
+}
+
+.title1 {
+    padding: 10px;
+}
+
+canvas {
+    position: relative;
+    // margin-top: 80%;
+    display: block;
+    box-shadow: 0 0 5px 1px #999;
+    margin: 2em auto;
+}
+
+.botones {
+    justify-content: center;
+    display: flex;
+    gap: 10px;
+    margin: 20px;
+}
+
+
+.cuadro {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid;
+    margin: 10% 25% 0 25%;
+    border-radius: 10px;
+    border-color: #adb5bd;
+}
+
+.imagen {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.text {
+    margin: 10px;
+}
+
+.grids {
+    display: flex;
+    grid-template-rows: 1fr 1fr;
+}
+
