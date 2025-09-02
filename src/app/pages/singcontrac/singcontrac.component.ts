@@ -85,24 +85,35 @@ export class SingcontracComponent {
   }
 
   enviarfirma(){
-    this.spinner.show();
-   if (this.singfirm === true ){
-    // console.log('finaliza', this.sig.toDataURL());
-    this.apicontrac.apicontracsing(this.id1, this.sig.toDataURL() ).subscribe(resp => {
-      // console.log(resp);
-      this.spinner.hide();
-      this.routes.navigate(['/singfirmado']);
-    });
-   } else {
-    this.spinner.hide();
-    Swal.fire ({
+
+
+  Swal.fire ({
       position: 'center',
-      icon: 'error',
-      title: 'No Se ha Firmado',
+      icon: 'success',
+      title: 'Felicitaciones solo nos Falta el ultimo Paso',
       showConfirmButton: false,
       timer: 1500
     });
-   }
+
+
+  //   this.spinner.show();
+  //  if (this.singfirm === true ){
+  //   // console.log('finaliza', this.sig.toDataURL());
+  //   this.apicontrac.apicontracsing(this.id1, this.sig.toDataURL() ).subscribe(resp => {
+  //     // console.log(resp);
+  //     this.spinner.hide();
+  //     this.routes.navigate(['/singfirmado']);
+  //   });
+  //  } else {
+  //   this.spinner.hide();
+  //   Swal.fire ({
+  //     position: 'center',
+  //     icon: 'error',
+  //     title: 'No Se ha Firmado',
+  //     showConfirmButton: false,
+  //     timer: 1500
+  //   });
+  //  }
   }
 
 

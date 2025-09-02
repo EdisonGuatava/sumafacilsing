@@ -9,6 +9,7 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
 import { SolicitudComponent } from './pages/solicitud/solicitud.component';
 import { SingcontracComponent } from './pages/singcontrac/singcontrac.component';
 import { SingfirmadoComponent } from './pages/singfirmado/singfirmado.component';
+import { SingcontracavalComponent } from './pages/singcontracaval/singcontracaval.component';
 
 export const routes: Routes = [
   {
@@ -61,6 +62,10 @@ export const routes: Routes = [
   {
     path: 'singcontrac/:id',
     component: SingcontracComponent,
+  },
+  {
+    path: 'singcontracaval/:id',
+    component: SingcontracavalComponent
   },
   {
     path: 'singfirmado',
