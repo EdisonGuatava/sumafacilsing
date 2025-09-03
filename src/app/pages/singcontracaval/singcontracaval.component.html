@@ -1,1 +1,45 @@
-<p>singcontracaval works!</p>
+
+<!-- <p>singcontrac works!</p> -->
+<header class="al-header al-header--impact" role="banner">
+  <div class="al-header__sweep" aria-hidden="true"></div>
+
+  <img class="al-header__logo"
+       src="../../../assets/images/Alianzaml.png"
+       alt="Alianza ML">
+
+  <div class="al-header__titles">
+    <h1>ACUERDO COMERCIAL DIGITAL</h1>
+    <p>Crédito Rotativo de Bajo Monto</p>
+  </div>
+</header>
+
+
+
+<div class="card" >
+    <pdf-viewer
+      [src]="pdfSrc"
+      [rotation]="0"
+      [original-size]="false"
+      [show-all]="true"
+      [fit-to-page]="false"
+      [zoom]="1"
+      [zoom-scale]="'page-width'"
+      [stick-to-page]="false"
+      [render-text]="true"
+      [external-link-target]="'blank'"
+      [autoresize]="true"
+      [show-borders]="true"
+      style="width: 100%; height: 65vh"
+    ></pdf-viewer>
+  </div>
+
+
+<div class="firma">
+    <canvas #canvas (touchstart)="startSignPadDrawing($event)" (touchmove)="movedFinger($event)"></canvas>
+</div>
+
+  <div class="botones">
+    <button class="btn btn-success" (click)="enviarfirma()">Guardar</button>
+    <button class="btn btn-danger" (click)="clear()">Borrar</button>
+</div>
+<!-- } -->

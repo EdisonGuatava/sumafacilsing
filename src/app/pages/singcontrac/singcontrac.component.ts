@@ -30,7 +30,7 @@ export class SingcontracComponent {
     private activateRoute: ActivatedRoute,
     private spinner: NgxSpinnerService,
     private routes: Router
-  ) { 
+  ) {
     activateRoute.params.subscribe((params) => {
       this.id1 = params['id'];
     });
@@ -40,7 +40,7 @@ export class SingcontracComponent {
     this.spinner.show();
     this.descargainfopara();
     // this.cargapdf = true;
-    
+
   }
 
   descargainfopara(){
@@ -59,17 +59,17 @@ export class SingcontracComponent {
             fileReader.onload = () => {
                 this.pdfSrc = new Uint8Array(fileReader.result as ArrayBuffer);
             };
-            fileReader.readAsArrayBuffer(this.tempBlob);  
+            fileReader.readAsArrayBuffer(this.tempBlob);
             this.spinner.hide();
           })
       }  else {
         this.routes.navigate(['/singfirmado']);
         this.spinner.hide();
       }
-      
-      // 
+
+      //
     })
-    
+
   }
 
   clear() {
@@ -94,6 +94,8 @@ export class SingcontracComponent {
       showConfirmButton: false,
       timer: 1500
     });
+
+    this.routes.navigate(['/singcontracaval/' + this.id1]);
 
 
   //   this.spinner.show();

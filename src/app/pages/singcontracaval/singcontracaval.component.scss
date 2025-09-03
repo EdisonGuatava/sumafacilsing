@@ -1,0 +1,200 @@
+
+/* ======= Tokens Alianza ML (extraídos del logo) ======= */
+$al-blue:  #173C6D; // azul principal
+$al-copper:#AF4D10; // cobre
+$al-gray:  #E0DFDF;
+$al-dark:  #0E2747; // azul muy oscuro para textos
+
+/* ======= Header base ======= */
+.al-header {
+  --blue:   #{$al-blue};
+  --copper: #{$al-copper};
+  --gray:   #{$al-gray};
+  --dark:   #{$al-dark};
+
+  position: relative;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 1rem;
+  padding: 22px 28px 24px;
+  background: #fff;
+  color: var(--dark);
+  border-bottom: 1px solid rgba(0,0,0,.06);
+  overflow: hidden;
+
+  .al-header__sweep {
+    position: absolute; left: 0; top: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--blue), var(--copper));
+    animation: al-sweep-loop 6s linear infinite;
+    content: "";
+  }
+
+  .al-header__logo {
+    height: 76px; width: auto;
+    filter: drop-shadow(0 1px 0 rgba(0,0,0,.03));
+    transform: translateY(10px);
+    opacity: 0;
+    animation: al-rise .9s .1s ease-out forwards;
+  }
+
+  .al-header__titles {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute; left: 0; bottom: -8px;
+      height: 4px; width: clamp(160px, 28vw, 340px);
+      background: linear-gradient(90deg, var(--blue), var(--copper));
+      border-radius: 999px; opacity: .9;
+    }
+
+    h1 {
+      margin: 0;
+      font-weight: 800;
+      letter-spacing: .3px;
+      font-size: clamp(1.35rem, 2.6vw, 1.8rem);
+      color: var(--dark);
+      /* leve brillo azul en el texto */
+      text-shadow: 0 1px 0 rgba(255,255,255,.25), 0 2px 8px rgba(23,60,109,.06);
+    }
+    p {
+      margin: .25rem 0 0;
+      font-size: clamp(.95rem, 1.6vw, 1.05rem);
+      color: #234462;
+      opacity: .95;
+    }
+  }
+}
+
+/* ======= Versión impactante con animaciones constantes ======= */
+.al-header--impact {
+  /* Fondo con patrón diagonal + degradé azul→cobre */
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(14,39,71,.035) 0 6px,
+      rgba(14,39,71,0) 6px 12px
+    ),
+    linear-gradient(120deg,
+      rgba(23,60,109,.08),
+      rgba(175,77,16,.08)
+    ),
+    #fff;
+
+  /* movimiento lento y constante del patrón */
+  background-size: 200% 200%;
+  animation: al-bg-move 30s linear infinite; // 30s = lento elegante
+
+  /* mancha diagonal translúcida a la derecha */
+  &::before {
+    content: "";
+    position: absolute;
+    right: -14%; top: -40px;
+    width: 42%; height: 220%;
+    background: linear-gradient(160deg,
+      rgba(23,60,109,.18),
+      rgba(175,77,16,.18)
+    );
+    transform: skewX(-18deg);
+    filter: blur(12px);
+    pointer-events: none;
+  }
+}
+
+/* ======= Animaciones ======= */
+@keyframes al-rise { to { transform: translateY(0); opacity: 1; } }
+
+@keyframes al-bg-move {
+  0%   { background-position: 0% 0%; }
+  50%  { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+@keyframes al-sweep-loop {
+  0%   { transform: translateX(-100%); }
+  50%  { transform: translateX(0%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ======= Accesibilidad ======= */
+@media (prefers-reduced-motion: reduce) {
+  .al-header--impact { animation: none; background-position: center; }
+  .al-header__sweep { animation: none; transform: none; }
+  .al-header__logo  { animation: none; transform: none; opacity: 1; }
+}
+
+/* ======= Impresión / exportar a PDF ======= */
+@media print {
+  .al-header--impact {
+    background: #fff !important;
+    &::before { display: none; }
+  }
+  .al-header__sweep { display: none !important; }
+  .al-header__titles::after { background: var(--blue); opacity: .25; }
+}
+
+
+
+
+
+/* ======= Tus estilos existentes ======= */
+.title {
+  margin: 20px;
+  text-align: center;
+  justify-content: center;
+}
+
+/* Unificado: tenías dos .text; aquí combino padding+grid+margin */
+.text {
+  padding: 20px;
+  margin: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.text1 {
+  padding: 10px;
+}
+
+.title1 {
+  padding: 10px;
+}
+
+canvas {
+  position: relative;
+  // margin-top: 80%;
+  display: block;
+  box-shadow: 0 0 5px 1px #999;
+  margin: 2em auto;
+}
+
+.botones {
+  justify-content: center;
+  display: flex;
+  gap: 10px;
+  margin: 20px;
+}
+
+.cuadro {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid;
+  margin: 10% 25% 0 25%;
+  border-radius: 10px;
+  border-color: #adb5bd;
+}
+
+.imagen {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.grids {
+  display: flex;
+  grid-template-rows: 1fr 1fr;
+}
