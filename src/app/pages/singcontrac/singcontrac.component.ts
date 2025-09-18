@@ -87,15 +87,51 @@ export class SingcontracComponent {
   enviarfirma(){
 
 
-  Swal.fire ({
-      position: 'center',
-      icon: 'success',
-      title: 'Felicitaciones solo nos Falta el ultimo Paso',
-      showConfirmButton: false,
-      timer: 1500
+    const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: "btn btn-success",
+    cancelButton: "btn btn-danger"
+  },
+  buttonsStyling: false
+});
+swalWithBootstrapButtons.fire({
+  title: "¿Autorizo Continuar con el Aval?",
+  text: "¿Autorizo Continuar con el Aval?",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonText: "Deseo Continuar,!",
+  cancelButtonText: "No, !",
+  reverseButtons: true
+}).then((result) => {
+  if (result.isConfirmed) {
+    swalWithBootstrapButtons.fire({
+      title: "Deleted!",
+      text: "Debes Cumplir Con los Requisitos.",
+      icon: "success"
     });
+  } else if (
+    /* Read more about handling dismissals below */
+    result.dismiss === Swal.DismissReason.cancel
+  ) {
+    swalWithBootstrapButtons.fire({
+      title: "Cancelled",
+      text: "Your imaginary file is safe :)",
+      icon: "error"
+    });
+  }
+});
 
-    this.routes.navigate(['/singcontracaval/' + this.id1]);
+//Generemos
+
+
+  // Swal.fire ({
+  //     position: 'center',
+  //     icon: 'success',
+  //     title: 'Felicitaciones solo nos Falta el ultimo Paso Contrato Aval',
+  //     showConfirmButton: false,
+  //   });
+
+    // this.routes.navigate(['/singcontracaval/' + this.id1]);
 
 
   //   this.spinner.show();

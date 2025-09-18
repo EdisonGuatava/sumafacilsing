@@ -52,7 +52,7 @@ export class SingcontracavalComponent {
       // console.log(resp);
       if (resp.data === false ){
         this.sig = new SignaturePad(this.canvas.nativeElement);
-      this.apicontrac.apicontrac(this.id1).subscribe(resp => {
+      this.apicontrac.apicontracaval(this.id1).subscribe(resp => {
             // console.log(resp);
             // this.spinner.hide();
             this.tempBlob = new Blob([resp], { type: 'application/pdf' });
@@ -91,12 +91,12 @@ export class SingcontracavalComponent {
   Swal.fire ({
       position: 'center',
       icon: 'success',
-      title: 'Felicitaciones solo nos Falta el ultimo Paso',
+      title: 'Excelente Se Completo la Firma',
       showConfirmButton: false,
       timer: 1500
     });
 
-    this.routes.navigate(['/singcontracaval/' + this.id1]);
+     this.routes.navigate(['/singfirmado']);
 
 
   //   this.spinner.show();
