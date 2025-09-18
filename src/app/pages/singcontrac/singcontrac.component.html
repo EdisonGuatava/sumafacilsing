@@ -33,14 +33,33 @@
   </div>
 
 
-<div class="firma">
-    <canvas #canvas (touchstart)="startSignPadDrawing($event)" (touchmove)="movedFinger($event)"></canvas>
-</div>
+<div class="row align-items-center m-5">
 
-  <div class="botones">
-    <button class="btn btn-success" (click)="enviarfirma()">Autorizo Aval</button>
-    <button class="btn btn-danger" (click)="clear()">Borrar</button>
-</div>
+    <div class="col-md-5">
+      <h3>Documentos a Firmar</h3>
+      <p>Por favor, revisa los siguientes documentos antes de firmar:</p>
+
+      <ul class="list-group">
+        <li class="list-group-item">1. Contrato de Prestación de Servicios</li>
+        <li class="list-group-item">2. Aval</li>
+        <li class="list-group-item">3. Pagare</li>
+      </ul>
+    </div>
+
+    <div class="col-md-7">
+      <div class="card p-3">
+        <div class="firma">
+          <canvas #canvas (touchstart)="startSignPadDrawing($event)" (touchmove)="movedFinger($event)"></canvas>
+        </div>
+
+        <div class="botones text-center mt-3">
+          <button class="btn btn-success me-2" (click)="enviarfirma()">Autorizo Aval</button>
+          <button class="btn btn-danger" (click)="clear()">Borrar</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
 <!-- } -->
 
 

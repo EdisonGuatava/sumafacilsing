@@ -90,7 +90,7 @@ export class SingcontracComponent {
     const swalWithBootstrapButtons = Swal.mixin({
   customClass: {
     confirmButton: "btn btn-success",
-    cancelButton: "btn btn-danger"
+    cancelButton: "btn btn-danger me-3"
   },
   buttonsStyling: false
 });
@@ -99,13 +99,13 @@ swalWithBootstrapButtons.fire({
   text: "¿Autorizo Continuar con el Aval?",
   icon: "warning",
   showCancelButton: true,
-  confirmButtonText: "Deseo Continuar,!",
-  cancelButtonText: "No, !",
+  confirmButtonText: "¡Deseo Continuar!",
+  cancelButtonText: "No!",
   reverseButtons: true
 }).then((result) => {
   if (result.isConfirmed) {
     swalWithBootstrapButtons.fire({
-      title: "Deleted!",
+      title: "¡Autorizado!",
       text: "Debes Cumplir Con los Requisitos.",
       icon: "success"
     });
@@ -114,9 +114,20 @@ swalWithBootstrapButtons.fire({
     result.dismiss === Swal.DismissReason.cancel
   ) {
     swalWithBootstrapButtons.fire({
-      title: "Cancelled",
-      text: "Your imaginary file is safe :)",
-      icon: "error"
+      title: "Proceso No Autorizado",
+      // text: "El proceso no continuará.",
+      icon: "info",
+      html: `
+            <p class="text-start">Para poder continuar con el aval, debes cumplir con los siguientes requisitos:</p>
+            <ul class="text-start">
+                <li>Fotocopia de la cédula del codeudor con propiedad raíz libre de hipoteca.</li>
+                <li>Certificado de tradición vigente (máximo 30 días de expedición).</li>
+                <li>Certificación laboral del codeudor solidario.</li>
+                <li>Certificado de ingresos expedido por contador.</li>
+                <li>Pagaré y carta de instrucciones diligenciados y notarizados (adjunto).</li>
+            </ul>
+        `,
+        confirmButtonText: 'Entendido'
     });
   }
 });
